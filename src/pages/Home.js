@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MovieCard from '../components/MovieCard'
 import NavBar from '../components/NavBar'
 
@@ -10,17 +10,17 @@ function Home() {
       .then((response) => response.json())
       .then((data) => setMovies(data))
   }, [])
+
   return (
-    <>
-      <header>
-        <NavBar />
-      </header>
-      <main>
+    <div>
+      <NavBar />
+      <h1>Home Page</h1>
+      <div>
         {movies.map((movie) => (
-          <MovieCard key={movie.id} title={movie.title} id={movie.id} />
+          <MovieCard key={movie.id} movie={movie} />
         ))}
-      </main>
-    </>
+      </div>
+    </div>
   )
 }
 
